@@ -1,29 +1,34 @@
 package JSIA.WebMoteros.models;
 
 public class LoginRequest {
-    private String email;
-    private String password;
+    private String mail;
+    private String contrasenya;
+    
+	public LoginRequest(String mail, String contrasenya) {
+		super();
+		this.mail = mail;
+		this.contrasenya = contrasenya;
+	}
 
-    public LoginRequest(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
+	public String getMail() {
+		return mail;
+	}
 
-    // Getters y setters
-    public String getEmail() {
-        return email;
-    }
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public String getContrasenya() {
+		return contrasenya;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setContrasenya(String contrasenya) {
+		this.contrasenya = contrasenya;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    
+	
+    
+    
 }
 

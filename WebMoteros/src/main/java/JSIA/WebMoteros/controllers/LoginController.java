@@ -21,9 +21,9 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String handleLogin(@RequestParam String email, @RequestParam String password) {
+    public String handleLogin(@RequestParam String mail, @RequestParam String contrasenya) {
     	
-        LoginRequest loginRequest = new LoginRequest(email, password);
+        LoginRequest loginRequest = new LoginRequest(mail, contrasenya);
         
         String response = apiService.sendLoginData(loginRequest);
 
