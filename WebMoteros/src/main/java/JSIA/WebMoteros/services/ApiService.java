@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 
 
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import JSIA.WebMoteros.models.LoginRequest;
+import JSIA.WebMoteros.dtos.LoginRequestDto;
 
 @Service
 public class ApiService {
@@ -20,10 +21,13 @@ public class ApiService {
 	@Value("${api.endpoint}")
 	private String apiEndpoint;
 
-	public String sendLoginData(LoginRequest loginRequest) {
+	public String sendLoginData(LoginRequestDto loginRequest, String campo) {
 		// Crear una instancia de RestTemplate
 		try {
-	        URL url = new URL(apiEndpoint);
+			System.out.print("entramos");
+			URI uri = new URI("http://localhost:8081/apiMoteros/api/"+campo+"/login");
+            URL url = uri.toURL();
+            
 	        HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
 	        conexion.setRequestMethod("POST");
 	        conexion.setRequestProperty("Content-Type", "application/json");
@@ -50,14 +54,14 @@ public class ApiService {
 	                response.append(inputLine);
 	            }
 	            in.close();
-	            return response.toString();
+	            return "success";
 	        } else {
 	            System.out.println("Error en la conexión: " + codigoRespuesta);
 	        }
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
-	    return null;
+	    return "asdf";
 	}
 
 }

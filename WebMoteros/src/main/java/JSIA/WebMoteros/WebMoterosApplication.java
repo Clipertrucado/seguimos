@@ -9,5 +9,4 @@ public class WebMoterosApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WebMoterosApplication.class, args);
 	}
-
 }
